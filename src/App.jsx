@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PostsList } from "./components/PostsList";
 import { Layout, Menu, Button, Breadcrumb, Pagination } from "antd";
 import logo from "./assets/222.png";
@@ -8,6 +8,9 @@ const { Header, Content, Footer } = Layout;
 const menuData = ["Главная", "Истории", "Git"];
 
 export const App = () => {
+
+  const [posts, setPosts] = useState(postData);
+
   const styleHeader = {
     display: "flex",
     flexDirection: "row",
@@ -31,11 +34,9 @@ export const App = () => {
         </Header>
 
         <Content>
-        
-
               <Button onClick={ () => console.log("Есть контакт") } className="buttonStyle">Добавить историю
               </Button>
-              <PostsList props={postData}/>
+              <PostsList props={posts}/>
               <Pagination defaultCurrent={1} total={50} />
           </Content>
         <Footer>Footer</Footer>
