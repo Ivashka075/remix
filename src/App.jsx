@@ -18,10 +18,10 @@ export const App = () => {
     Promise.all([ api.getInfoUser(), api.getPosts() ])
       .then(([ userData, postsData ]) => {
           setUserName(userData.name)
-          (setPosts(postsData), console.log(postsData))
+          setPosts(postsData)
       }
       )
-     },[]
+     },[ posts ]
   )
 
   

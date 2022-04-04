@@ -1,6 +1,8 @@
 import React from "react";
 import { Post } from "../Post";
 import stylePL from "./style.module.css";
+
+
 export const PostsList = ({props}) => {
   
         return (

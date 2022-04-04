@@ -9,7 +9,7 @@ class Api {
         this._inToken = `${inToken}`;
     }
 
-    getInfoUser () {
+    getInfoUser() {
         return fetch(`${this._inUrl}/users/me`, {
             headers: {
             authorization: this._inToken
@@ -17,12 +17,23 @@ class Api {
     }).then(onResponce)   
 }
 
-    getPosts () {
+    getPosts() {
     return fetch(`${this._inUrl}/posts`, {
         headers: {
             authorization: this._inToken
         }
     }).then(onResponce)
+}
+
+    delPost(postId) {
+            // console.log(postId);
+        return fetch(`${this._inUrl}/posts/${postId}`, {
+            method: "DELETE",
+            headers: {
+                authorization: this._inToken
+            }
+        }).then(onResponce)
+        
 }
 
 };
