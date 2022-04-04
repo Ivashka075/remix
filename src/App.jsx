@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PostsList } from "./components/PostsList";
 import { Layout, Menu, Button, Breadcrumb, Pagination } from "antd";
 import logo from "./assets/222.png";
-import { postData } from "./posts";
+// import { postData } from "./posts";
+import api from "./utils/Api";
 
 const { Header, Content, Footer } = Layout;
 const menuData = ["Главная", "Истории", "Git"];
 
 export const App = () => {
 
-  const [posts, setPosts] = useState(postData);
+  const [posts, setPosts] = useState([]);
+  const [ userName, setUserName ] = useState('');
+  
+
+  useEffect ( ()=> { 
+    Promise.all([ api.getInfoUser(), api.getPosts() ])
+      .then(([ userData, postsData ]) => {
+          setUserName(userData.name)
+          (setPosts(postsData), console.log(postsData))
+      }
+      )
+     },[]
+  )
+
+  
 
   const styleHeader = {
     display: "flex",
@@ -31,6 +46,8 @@ export const App = () => {
               return <Menu.Item key={key}>{`${menuData[key - 1]}`}</Menu.Item>;
             })}
           </Menu>
+          <div className="userNameStyle">{`В сети ${userName}`}</div>
+
         </Header>
 
         <Content>

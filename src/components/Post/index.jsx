@@ -3,7 +3,7 @@ import React from "react";
 import style from "./index.module.css";
 
 
-export const Post = ({title, name, about, text, tags, created_at, updated_at}) => {
+export const Post = ({title, name, about, text, tags, created_at, updated_at, likes}) => {
     return(
    <Card className={style.card}>
         <h1>{title}</h1>
@@ -13,7 +13,7 @@ export const Post = ({title, name, about, text, tags, created_at, updated_at}) =
         <div>{tags}</div>
         <div>{created_at}</div>
         <div>{updated_at}</div>
-        "Это я"
+        <div>{likes.length}</div>
     </Card>
     )
 }

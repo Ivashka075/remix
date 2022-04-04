@@ -643,5 +643,5 @@ export const postData =
         "created_at": "2022-03-11T23:27:36.313Z",
         "updated_at": "2022-03-11T23:27:36.313Z",
         "__v": 0
-    },
+    }
 ];
