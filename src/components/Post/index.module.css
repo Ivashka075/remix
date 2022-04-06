@@ -2,3 +2,13 @@
     background-color: rgb(200, 208, 214);
     border-radius: 10px;
 }
+.iconlike {
+    width: 20px;
+    height: 20px;
+}
+.buticon {
+    background-color: aliceblue;
+}
+.buticon_active {
+    background-color: red;
+}

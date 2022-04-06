@@ -26,7 +26,6 @@ class Api {
 }
 
     delPost(postId) {
-            // console.log(postId);
         return fetch(`${this._inUrl}/posts/${postId}`, {
             method: "DELETE",
             headers: {
@@ -34,6 +33,15 @@ class Api {
             }
         }).then(onResponce)
         
+}
+
+    likeStatusFun(postId, isLike){
+        return fetch(`${this._inUrl}/posts/likes/${postId}`, {
+            method: isLike ? "DELETE" : "PUT",
+            headers: {
+                authorization: this._inToken,
+            },
+     }).then(onResponce)
 }
 
 };
