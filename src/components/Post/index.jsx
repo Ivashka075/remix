@@ -29,12 +29,12 @@ function clickLike(){
         <div>{tags}</div>
         <div>{created_at}</div>
         <div>{updated_at}</div>
-        <div>{`${likes.length} likes`}</div>
         <button onClick={deletePost}>Удалить историю</button>
         <div>
            <button onClick={clickLike} className={!isLiked ? style.buticon : style.buticon_active}>
              <img  className={style.iconlike} src={save} alt="Like+"/>
            </button> 
+           <div>{`${likes.length} likes`}</div>
         </div>
     </Card>
     )
