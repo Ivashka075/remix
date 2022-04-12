@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Button, } from "antd";
+// import { PostsList } from "./components/PostsList";
+import { Layout, Menu, Button, Breadcrumb, Pagination } from "antd";
 import logo from "./assets/222.png";
 import api from "./utils/Api";
-import { PostsPage } from "./pages/PostsPage/PostsPage";
-import { PostPage } from "./pages/PostPage/PostPage";
-import { Route, Routes } from "react-router-dom";
+import { PostInfo } from "./components/PostInfo/PostInfo";
+
+const postId = '62559056104f3e8396833966';
 
 const { Header, Content, Footer } = Layout;
 const menuData = ["Главная", "Истории", "Git"];
 
-export const App = () => {
+export const PostPage = () => {
 
-  const [posts, setPosts] = useState([]);
+  const [ PostIn, setPostIn ] = useState([]);
   const [ enterUser, setUser ] = useState({});
   
 
   useEffect ( ()=> { 
-    Promise.all([ api.getInfoUser(), api.getPosts() ])
+    Promise.all([ api.getInfoUser(), api.getPostById(postId) ])
       .then(([ userData, postsData ]) => {
           setUser(userData)
-          setPosts(postsData)
+          setPostIn(postsData)
       } 
       )
      },[]
@@ -66,32 +67,8 @@ export const App = () => {
         <Content>
               <Button onClick={ () => console.log("Есть контакт") } className="buttonStyle">Добавить историю
               </Button>
-
-              <Routes>
-                <Route
-                  path="/" element={
-                    <PostsPage 
-                    posts={posts} 
-                    therePostLike={therePostLike} 
-                    enterUser={enterUser}
-                   />
-                  }
-                />
-
-                <Route
-                  path="/post/:postId" element={
-                    <PostPage 
-                    enterUser={enterUser} 
-                    therePostLike={therePostLike}
-                    />
-                  }
-                />
-
-              </Routes>
-              
-              
-
-
+              <PostInfo {...PostIn} enterUser={enterUser} onPostLike={therePostLike}/>
+              {/* <PostsList props={posts} enterUser={enterUser} onPostLike={therePostLike}/> */}
           </Content>
         <Footer>Footer</Footer>
       </Layout>

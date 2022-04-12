@@ -3,6 +3,7 @@ import React from "react";
 import style from "./index.module.css";
 import api from "../../utils/Api";
 import save from "./img/12.png";
+import { Link } from "react-router-dom";
 // import cname from "classnames";
 
 
@@ -21,7 +22,8 @@ function clickLike(){
    } 
     
     return(
-   <Card className={style.card}>
+ <Link to={`/post/${_id}`}>
+     <Card className={style.card}>
         <h1>{title}</h1>
         <div>{name}</div>
         <div>{about}</div>
@@ -36,6 +38,8 @@ function clickLike(){
            </button> 
            <div>{`${likes.length} likes`}</div>
         </div>
-    </Card>
+     </Card>
+ </Link> 
+  
     )
 }
