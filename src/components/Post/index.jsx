@@ -1,24 +1,29 @@
 import { Card } from "antd";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import style from "./index.module.css";
 import api from "../../utils/Api";
 import save from "./img/12.png";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/contextUser";
 // import cname from "classnames";
 
 
 
-export const Post = ({ enterUser, onPostLike, title, name, about, text, tags, created_at, updated_at, likes, _id}) => {
-    
+export const Post = ({ onPostLike, title, name, about, text, tags, created_at, updated_at, likes, _id}) => {
+  const enterUser = useContext(UserContext);  
 const isLiked = likes.some( id => id === enterUser._id);
 
-function clickLike(){
+console.log(enterUser);
+
+function clickLike(event){
+   event.preventDefault();
    onPostLike({_id, likes})
 }
 
 
-   const deletePost = ()=>{
-       api.delPost(_id)
+   const deletePost = (e)=>{ 
+      e.preventDefault();
+        api.delPost(_id);
    } 
     
     return(

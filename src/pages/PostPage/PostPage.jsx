@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 // const postId = '62559056104f3e8396833966';
 
 
-export const PostPage = ( { enterUser, therePostLike } ) => {
+export const PostPage = ( { therePostLike } ) => {
 
   const [ PostIn, setPostIn ] = useState([]);
   
@@ -26,7 +26,7 @@ export const PostPage = ( { enterUser, therePostLike } ) => {
 
   return (
     <>
-              <PostInfo {...PostIn} enterUser={enterUser} onPostLike={therePostLike}/>
+              <PostInfo {...PostIn} onPostLike={therePostLike}/>
     </>
   );
 };

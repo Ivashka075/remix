@@ -5,6 +5,7 @@ import api from "./utils/Api";
 import { PostsPage } from "./pages/PostsPage/PostsPage";
 import { PostPage } from "./pages/PostPage/PostPage";
 import { Route, Routes } from "react-router-dom";
+import { UserContext } from "./context/contextUser";
 
 const { Header, Content, Footer } = Layout;
 const menuData = ["Главная", "Истории", "Git"];
@@ -34,12 +35,12 @@ export const App = () => {
   };
 
   function therePostLike({_id, likes}){
-    const isLiked = likes.some( id => id === enterUser._id )
+    const isLiked = likes.some( id => id === enterUser._id );
       api.likeStatusFun(_id, isLiked)
         .then((newPost)=> {
           const newPostState = posts.map( pos => { 
-            console.log('Пост с сервера', newPost);
-            console.log('Пост из стейта в пререборе', pos);
+            // console.log('Пост с сервера', newPost);
+            // console.log('Пост из стейта в пререборе', pos);
             return pos._id === newPost._id ? newPost : pos 
           })
 
@@ -47,7 +48,7 @@ export const App = () => {
         })
   }
   return (
-    <>
+    <UserContext.Provider value={enterUser}>
       <Layout>
         <Header style={styleHeader}> 
           <div className="logodiv">
@@ -99,6 +100,6 @@ export const App = () => {
           </Content>
         <Footer>Footer</Footer>
       </Layout>
-    </>
+    </UserContext.Provider>
   );
 };
