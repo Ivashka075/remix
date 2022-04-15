@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles.css";
+import s from "./styles.module.css";
 import api from "../../utils/Api";
 import { useNavigate } from "react-router-dom";
 
@@ -11,9 +11,6 @@ export function NewPostForm({funEnterNewPost}) {
         image: '',
         tags: ''
     })
-
-    
-
     function handleChange(event) {
         if (event.target.name == "tags") {
             setNewPost({...newPost, [event.target.name] : event.target.value.split(" ") })
@@ -22,7 +19,6 @@ export function NewPostForm({funEnterNewPost}) {
             setNewPost({...newPost, [event.target.name] : event.target.value }) 
         }
     }
-
     function handleSubmit(e) {
         e.preventDefault();
         funEnterNewPost(newPost);
@@ -35,11 +31,10 @@ export function NewPostForm({funEnterNewPost}) {
         tags: ''
         })
     }
-
     return(
         <div>
-            <a href="#" className="button-back" onClick={()=> navigate(-1)}>Назад</a>
-            <form onSubmit={handleSubmit} className="form__new-Post">
+            <a href="#" className={s.buttonback} onClick={()=> navigate(-1)}>Назад</a>
+            <form onSubmit={handleSubmit} className={s.formnewpost}>
                 <h2>Введите данные нового поста</h2>
                 <input name="title" type='text' placeholder="Название поста" value={newPost.title} onChange={handleChange}/>
                 <input name="text" type='text' placeholder="Текст" value={newPost.text} onChange={handleChange}/>

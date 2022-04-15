@@ -1,0 +1,10 @@
+.formnewpost {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+}
+.buttonback{
+    font-size: large;
+    margin: 30px;
+}

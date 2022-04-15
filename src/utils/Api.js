@@ -53,7 +53,7 @@ class Api {
   }
 
   postNewPost(bodyJSON) {
-    return fetch('https://api.react-learning.ru/posts', {
+    return fetch(`${this._inUrl}/posts`, {
       method: 'POST',
       headers: {
         authorization: this._inToken,
@@ -68,6 +68,19 @@ class Api {
     else { return Promise.reject(res) }
     })
   }
+
+  // updatePost( postId, bodyJSON ) {
+  //   return fetch(
+  //     `${this._inUrl}/posts/${postId}`, {
+  //       method: 'PATCH',
+  //       headers: {
+  //         authorization: this._inToken,
+  //         "Content-type": "application/json"
+  //       },
+  //       body: JSON.stringify({bodyJSON}),
+  //     }
+  //   ).then(onResponce);
+  // }
 }
 
 const parametrs = {

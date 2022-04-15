@@ -25,7 +25,7 @@ export const PostPage = ( { therePostLike } ) => {
 
   return (
     <>
-              <PostInfo {...PostIn} onPostLike={therePostLike}/>
+              <PostInfo {...PostIn} onPostLike={therePostLike} postId={postId} bodyJSON={PostIn}/>
     </>
   );
 };

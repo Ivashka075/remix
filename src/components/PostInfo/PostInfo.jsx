@@ -1,14 +1,10 @@
 // import { Card } from "antd";
 import React from "react";
-
-import style from "./styles.module.css";
-import api from "../../utils/Api";
-import save from "./img/12.png";
 import { useNavigate } from "react-router-dom";
+import s from "./styles.module.css"
 
 
-
-export const PostInfo = ({ enterUser, onPostLike, title, name, about, text, tags, created_at, updated_at, likes, _id}) => {
+export const PostInfo = ({ onPostLike, title, name, about, text, tags, created_at, updated_at, likes, _id}) => {
     const navigate = useNavigate();
 
     return(
@@ -16,8 +12,8 @@ export const PostInfo = ({ enterUser, onPostLike, title, name, about, text, tags
       //        <img  className={style.iconlike} src={save} alt="Like+"/>
       //      </button> 
    <>
-       <div>
-          <a href="#" className="button-back" onClick={()=> navigate(-1)}>Назад</a>
+       <div className={s.postinfo} >
+          <a href="#" className={s.buttonback} onClick={()=> navigate(-1)}>Назад</a>
           <h1>{title}</h1>
           <div>{name}</div>
           <div>{about}</div>
@@ -25,6 +21,9 @@ export const PostInfo = ({ enterUser, onPostLike, title, name, about, text, tags
           <div>Теги: {tags}</div>
           <div>Дата создания: {created_at}</div>
           <div>Дата изменения: {updated_at}</div>
+          <div>
+              <button onClick={()=>console.log('эээээээ')}>Редактировать</button>
+          </div>
        </div>
    </>
     )

@@ -1,13 +1,10 @@
 import { Card } from "antd";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import style from "./index.module.css";
 import api from "../../utils/Api";
 import save from "./img/12.png";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/contextUser";
-// import cname from "classnames";
-
-
 
 export const Post = ({ onPostLike, title, name, about, text, tags, created_at, updated_at, likes, _id}) => {
   const enterUser = useContext(UserContext);  
@@ -36,7 +33,7 @@ function clickLike(event){
         <div>{tags}</div>
         <div>{created_at}</div>
         <div>{updated_at}</div>
-        <button onClick={deletePost}>Удалить историю</button>
+        <button className={style.btndel} onClick={deletePost}>Удалить историю</button>
         <div>
            <button onClick={clickLike} className={!isLiked ? style.buticon : style.buticon_active}>
              <img  className={style.iconlike} src={save} alt="Like+"/>

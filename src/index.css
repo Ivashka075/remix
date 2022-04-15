@@ -1,3 +1,7 @@
+.footer {
+    background-color: rgb(29, 36, 33);
+    color: aliceblue;
+}
 .logodiv {
     height: 100%;
 }
@@ -7,6 +11,12 @@
 }
 .buttonStyle {
     margin: 50px;
+    font-size: large;
+    font-weight: 500;
+    background-color: rgb(152, 161, 175);
+    display: flex;
+    align-items: center;
+    box-shadow: 3px 3px 3px;
 }
 .userNameStyle {
     color: white;
