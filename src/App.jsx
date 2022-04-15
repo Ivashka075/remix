@@ -6,6 +6,8 @@ import { PostsPage } from "./pages/PostsPage/PostsPage";
 import { PostPage } from "./pages/PostPage/PostPage";
 import { Route, Routes } from "react-router-dom";
 import { UserContext } from "./context/contextUser";
+import { NewPostPage } from "./pages/NewPostPage/NewPostPage";
+import { Link } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
 const menuData = ["Главная", "Истории", "Git"];
@@ -14,6 +16,11 @@ export const App = () => {
 
   const [posts, setPosts] = useState([]);
   const [ enterUser, setUser ] = useState({});
+  const [ enterPost, setEnterPost ] = useState([]);
+
+  const enterNewPost = (newPostInfoNow) => {
+    setEnterPost([...enterPost, newPostInfoNow])
+  };
   
 
   useEffect ( ()=> { 
@@ -39,8 +46,6 @@ export const App = () => {
       api.likeStatusFun(_id, isLiked)
         .then((newPost)=> {
           const newPostState = posts.map( pos => { 
-            // console.log('Пост с сервера', newPost);
-            // console.log('Пост из стейта в пререборе', pos);
             return pos._id === newPost._id ? newPost : pos 
           })
 
@@ -65,8 +70,10 @@ export const App = () => {
         </Header>
 
         <Content>
+        <Link to={`/newpost`}>
               <Button onClick={ () => console.log("Есть контакт") } className="buttonStyle">Добавить историю
               </Button>
+              </Link>
 
               <Routes>
                 <Route
@@ -84,6 +91,13 @@ export const App = () => {
                     <PostPage 
                     enterUser={enterUser} 
                     therePostLike={therePostLike}
+                    />
+                  }
+                />
+
+                <Route
+                  path="/newpost" element={
+                    <NewPostPage funEnterNewPost={enterNewPost} formPostNewPost={api.postNewPost}
                     />
                   }
                 />

@@ -3,7 +3,6 @@ import api from "../../utils/Api";
 import { PostInfo } from "../../components/PostInfo/PostInfo";
 import { useParams } from "react-router-dom";
 
-// const postId = '62559056104f3e8396833966';
 
 
 export const PostPage = ( { therePostLike } ) => {

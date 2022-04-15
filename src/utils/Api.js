@@ -51,6 +51,23 @@ class Api {
       },
     }).then(onResponce);
   }
+
+  postNewPost(bodyJSON) {
+    return fetch('https://api.react-learning.ru/posts', {
+      method: 'POST',
+      headers: {
+        authorization: this._inToken,
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(bodyJSON),
+    }
+    ).then((res)=>{
+      if (res.ok) {
+        return res.json();
+    }
+    else { return Promise.reject(res) }
+    })
+  }
 }
 
 const parametrs = {
